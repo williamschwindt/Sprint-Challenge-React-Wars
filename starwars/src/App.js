@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import PersonSlide from './components/PersonSlide';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
 const App = () => {
   let [person, setPerson] = useState([])
@@ -24,16 +31,18 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      {person.map((per, index) => {
-        return <PersonSlide name={per.name} 
-        height={per.height} 
-        mass={per.mass} 
-        hair={per.hair_color} 
-        skin={per.skin_color} 
-        eyes={per.eye_color} 
-        birthYear={per.birth_year} 
-        key={index}/>
-      })}
+      <Container>
+        {person.map((per, index) => {
+          return <PersonSlide name={per.name} 
+          height={per.height} 
+          mass={per.mass} 
+          hair={per.hair_color} 
+          skin={per.skin_color} 
+          eyes={per.eye_color} 
+          birthYear={per.birth_year} 
+          key={index}/>
+        })}
+      </Container>
     </div>
   );
 }
